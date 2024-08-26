@@ -1,0 +1,16 @@
+pandas
+numpy
+matplotlib
+seaborn
+scikit-learn
+tensorflow    # or use torch if preferred
+streamlit
+requests
+scipy
+joblib
+catboost
+xgboost
+Flask
+openpyxl
+feaure_engine
+#-e .
