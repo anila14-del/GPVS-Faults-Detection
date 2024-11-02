@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar Panel Health Check</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">GVPS-fault-Detection
+       Predict the Defective and Non Defective Solar Panel
+     </h1>
+        <p class="text-center">Enter the parameters below to predict the health status of your solar panel.</p>
+        
+        <form action="{{ url_for('predict_status') }}" method="post">
+            <fieldset>
+                <legend>Input Solar Panel Data</legend>
+
+                <div class="form-group">
+                    <label for="Time">Time (seconds)</label>
+                    <input type="number" class="form-control" id="Time" name="Time" placeholder="Enter Time in seconds" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="Ipv">Photovoltaic Current (Ipv)</label>
+                    <input type="number" class="form-control" id="Ipv" name="Ipv" placeholder="Enter Photovoltaic Current" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="Vpv">Photovoltaic Voltage (Vpv)</label>
+                    <input type="number" class="form-control" id="Vpv" name="Vpv" placeholder="Enter Photovoltaic Voltage" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="Vdc">DC Voltage (Vdc)</label>
+                    <input type="number" class="form-control" id="Vdc" name="Vdc" placeholder="Enter DC Voltage" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="ia">Phase A Current (ia)</label>
+                    <input type="number" class="form-control" id="ia" name="ia" placeholder="Enter Phase A Current" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="ib">Phase B Current (ib)</label>
+                    <input type="number" class="form-control" id="ib" name="ib" placeholder="Enter Phase B Current" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="ic">Phase C Current (ic)</label>
+                    <input type="number" class="form-control" id="ic" name="ic" placeholder="Enter Phase C Current" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="va">Phase A Voltage (va)</label>
+                    <input type="number" class="form-control" id="va" name="va" placeholder="Enter Phase A Voltage" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="vb">Phase B Voltage (vb)</label>
+                    <input type="number" class="form-control" id="vb" name="vb" placeholder="Enter Phase B Voltage" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="vc">Phase C Voltage (vc)</label>
+                    <input type="number" class="form-control" id="vc" name="vc" placeholder="Enter Phase C Voltage" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="Iabc">Three-Phase Current (Iabc)</label>
+                    <input type="number" class="form-control" id="Iabc" name="Iabc" placeholder="Enter Three-Phase Current" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="If">Field Current (If)</label>
+                    <input type="number" class="form-control" id="If" name="If" placeholder="Enter Field Current" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="Vabc">Three-Phase Voltage (Vabc)</label>
+                    <input type="number" class="form-control" id="Vabc" name="Vabc" placeholder="Enter Three-Phase Voltage" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="Vf">Field Voltage (Vf)</label>
+                    <input type="number" class="form-control" id="Vf" name="Vf" placeholder="Enter Field Voltage" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Check Health Status</button>
+            </fieldset>
+        </form>
+
+        <div class="mt-5">
+            <h2 class="text-center">Prediction Result</h2>
+            <p class="text-center">{{ output_status }}</p>
+        </div>
+    </div>
+</body>
+</html>
