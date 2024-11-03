@@ -1,0 +1,26 @@
+import tensorflow as tf
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+import numpy as np
+
+# Generate some sample data
+X = np.random.rand(100, 10)  # 100 samples, 10 features
+y = np.random.randint(2, size=100)  # Binary target
+
+# Define a simple model
+model = Sequential([
+    Dense(16, activation='relu', input_shape=(10,)),
+    Dense(8, activation='relu'),
+    Dense(1, activation='sigmoid')
+])
+
+model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=0.01),
+              loss='binary_crossentropy',
+              metrics=['accuracy'])
+
+# Set up a TensorBoard callback to log metrics
+log_dir = "logs/new_experiment"
+tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=log_dir)
+
+# Train the model
+model.fit(X, y, epochs=5, batch_size=8, callbacks=[tensorboard_callback])
